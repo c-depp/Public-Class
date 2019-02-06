@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>Public Class - Ricerca</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content id="content" padding>
+
+  <ion-searchbar placeholder="Ricerca" (ionInput)="getMapItems($event)"></ion-searchbar>
+
+  <ion-item-group>
+    <ion-item *ngFor="let item of mapItems" (click)="goToDetails(item)">
+      {{item.Nome}}
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+  </ion-item-group>
+
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Public Class - {{slideTitle}}</ion-title>
+    <ion-button (click)="scanQR()">
+      <ion-icon name="qr-scanner" slot="end" align-self-end></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-slides [options]="sliderOpts">
+
+    <ion-slide>
+      <img src="../../assets/img/[Vectors] PianoPrimo.png" usemap="#pPrimo" id="PianoPrimoImg">
+
+      <map name="pPrimo">
+
+        <area *ngFor="let area of firstFloorAreas" [id]=area.IDAula [title]=area.Nome [alt]=area.Nome
+              [coords]=refreshCoords(area.Coords) shape="poly" (click)="onClick(area)">
+
+      </map>
+
+      <div id="highlight0" class="high" [hidden]=!showHighlight></div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/img/[Vectors] PianoTerra.png" usemap="#pTerra" id="PianoTerraImg">
+
+      <map name="pTerra">
+
+        <area *ngFor="let area of groundFloorAreas" [id]=area.IDAula [title]=area.Nome [alt]=area.Nome
+              [coords]=refreshCoords(area.Coords) shape="poly" (click)="onClick(area)">
+
+      </map>
+
+      <div id="highlight1" class="high" [hidden]=!showHighlight></div>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="../../assets/img/[Vectors] PianoSeminterrato.jpg" usemap="#pSemi" id="PianoSubImg">
+
+      <map name="pSemi">
+
+        <area *ngFor="let area of subFloorAreas" [id]=area.IDAula [title]=area.Nome [alt]=area.Nome
+              [coords]=refreshCoords(area.Coords) shape="poly" (click)="onClick(area)">
+
+      </map>
+
+      <div id="highlight2" class="high" [hidden]=!showHighlight></div>
+    </ion-slide>
+
+  </ion-slides>
+
+
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{nomeAula}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ng-container *ngIf="activities.length >= 1; then ifBlock else elseBlock"></ng-container>
+
+  <ng-template #ifBlock>
+    <ion-item-group>
+      <ion-card *ngFor="let item of activities">
+        <ion-card-title padding-start padding-top>
+          {{getShortDescr(item.description)}}
+        </ion-card-title>
+
+        <ion-card-content>
+          <ion-badge color="transparent">
+            <ion-icon name="time"></ion-icon>
+            {{getTime(item.start)}} - {{getTime(item.end)}}
+          </ion-badge>
+
+          <ion-badge color="transparent">
+            <ion-icon name="person"></ion-icon>
+            {{item.docente}}
+          </ion-badge>
+        </ion-card-content>
+
+      </ion-card>
+    </ion-item-group>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <h2 text-center> Nessuna attività prevista oggi! </h2>
+  </ng-template>
+
+  <ion-button (click)="locate()">
+    <ion-icon name="locate"></ion-icon>
+  </ion-button>
+
+</ion-content>
